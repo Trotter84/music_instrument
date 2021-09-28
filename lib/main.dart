@@ -4,26 +4,49 @@ import 'package:audioplayers/audioplayers.dart';
 void main() => runApp(const InstrumentApp());
 
 
-class InstrumentApp extends StatelessWidget {
+class InstrumentApp extends StatefulWidget {
   const InstrumentApp({Key? key}) : super(key: key);
+
+  @override
+  _InstrumentAppState createState() => _InstrumentAppState();
+}
+
+class _InstrumentAppState extends State<InstrumentApp> {
+@override
 
   void playSound(int soundNumber) {
     final player = AudioCache();
     player.play('note$soundNumber.wav');
   }
 
-  Expanded buildKey({required Color color, required int soundNumber}) {
+  Map<int, Color> eachNote = { 1: Colors.red, 2: Colors.orange, 3: Colors.yellow, 4: Colors.green, 5: Colors.teal, 6: Colors.blue, 7: Colors.purple };
+
+  void repeater() {
+    eachNote.forEach((k, v) {
+
+
+    });
+  }
+
+
+
+
+}
+
+  Expanded buildKey() {
     return Expanded(
       child: TextButton(
         onPressed: () {
-          playSound(soundNumber);
+          playSound(eachNote.noteNumber);
         },
         child: Container(
-          color: color,
+          color: eachNote.values.last,
         ),
       ),
     );
   }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -33,17 +56,12 @@ class InstrumentApp extends StatelessWidget {
         body: SafeArea(
           child: Column(
             children: [
-              buildKey(color: Colors.red, soundNumber: 1),
-              buildKey(color: Colors.orange, soundNumber: 2),
-              buildKey(color: Colors.yellow, soundNumber: 3),
-              buildKey(color: Colors.green, soundNumber: 4),
-              buildKey(color: Colors.teal, soundNumber: 5),
-              buildKey(color: Colors.blue, soundNumber: 6),
-              buildKey(color: Colors.purple, soundNumber: 7),
+              buildKey(),
             ],
           ),
         ),
       ),
     );
   }
+
 }
