@@ -13,8 +13,11 @@ class InstrumentApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         body: SafeArea(
-          child: Container(
-            color: Colors.blue.shade500,
+          child: Center(
+            child: TextButton(
+              onPressed: () {},
+              child: Text('Click Me'),
+            ),
           ),
         ),
       ),
