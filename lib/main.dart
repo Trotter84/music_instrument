@@ -15,7 +15,10 @@ class InstrumentApp extends StatelessWidget {
         body: SafeArea(
           child: Center(
             child: TextButton(
-              onPressed: () {},
+              onPressed: () {
+                final player = AudioCache();
+                player.play('note1.wav');
+              },
               child: Text('Click Me'),
             ),
           ),
